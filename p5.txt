@@ -98,17 +98,38 @@ SIP?
 
 
 9. Fijémonos en las tramas siguientes a la número 46:
- ** ¿Se registra con éxito en el primer intento?
- ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
- ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
- ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
+• ¿Se registra con éxito en el primer intento?
+    No, el servidor envía de hecho un SIP/2.0 401 Unauthorized.
 
 
-10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
- ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
- ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
- ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
- ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+• ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+    Cuando el servidor REGISTRAR nos envíe un 200 OK que responde a nuestro REGISTER.
+
+
+• ¿Podrı́as identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio).
+    El segundo mensaje que enviamos REGISTER contiene un campo Authorization con nonce="45a439ee7438aaea43ae8c7c2382922187f86c8b" response="5267d4e49d707d4443baefa913e8ff90"
+    Esto se refiere a un protocolo de seguridad de autenticación.
+
+
+• ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
+    Expires:3600 segundos.
+
+
+
+10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección
+sip:500@ekiga.net. Veamos el INVITE de cerca.
+
+• ¿Puede verse el nombre del que efectúa la llamada, ası́ como su dirección SIP?
+
+
+• ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué for mato/protocolo está?
+
+
+• ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+
+
+• ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
