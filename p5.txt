@@ -13,18 +13,31 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 2. Observa que las tramas capturadas corresponden a una sesión SIP con Ekiga, un cliente de VoIP para GNOME. Responde a las siguientes cuestiones:
  ** ¿Cuántos paquetes componen la captura?
- ** ¿Cuánto tiempo dura la captura?
- ** ¿Qué IP tiene la máquina donde se ha efectuado la captura? ¿Se trata de una IP pública o de una IP privada? ¿Por qué lo sabes?
+    La captura se compone de 954 paquetes.
 
+ ** ¿Cuánto tiempo dura la captura?
+    56.149345 segundos.
+
+** ¿Qué IP tiene la máquina donde se ha efectuado la captura? ¿Se trata de una IP pública o de una IP privada? ¿Por qué lo sabes?
+    192.168.1.34. Es una IP privada, porque tiene una dirección del tipo 192.168.x.x
 
 3. Antes de analizar las tramas, mira las estadísticas generales que aparecen en el menú de Statistics. En el apartado de jerarquía de protocolos (Protocol Hierarchy) se puede ver el porcentaje del tráfico correspondiente al protocolo TCP y UDP.
  ** ¿Cuál de los dos es mayor? ¿Es esto consistente con una aplicación que transmite en tiempo real?
+    El tráfico UDP es bastante mayor que el de TCP. 96.2% vs 2.1%. Tiene sentido que sea de esta manera, ya que todo lo relacionado con la petición que se hace a un servidor de internet y el DNS se hace por
+    TCP mientras que los protocolos de intercambio multimedia utilizan UDP. 
+
  ** ¿Qué otros protocolos podemos ver en la jerarquía de protocolos?
+    Simple Transversal of UDP Through NAT, SIP/SDP, RTP, RTCP, ICMP, ARP, IPV4, Ethernet.
+    ¿Cuáles son señales interesantes y cuáles son ruido?
+    Las señales interesantes serán las relacionadas con VoIP (DNS, STUN, SDP, SIP, RTP, RTCP). Hay paquetes de TCP/IP que seguramente no tengan que ver con la llamada.
 
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO Graphs. La captura que estamos viendo incluye desde la inicialización (registro) de la aplicación hasta su finalización, con una llamada entremedias.
  ** Filtra por sip para conocer cuándo se envían paquetes SIP. ¿En qué segundos tienen lugar esos envíos?
+    Los paquetes SIP empiezan en el segundo 7 con 6 paquetes, 14, 16, 38, 39 y termina aproximadamente en el segundo 55.    
+
  ** Y los paquetes con RTP, ¿cuándo se envían?
+    Los paquetes RTP empiezan en el segundo 17 hasta el 22, donde hay un silencio, para luego reanudarse en el segundo 23 y terminar en el 38.
 
 
 
