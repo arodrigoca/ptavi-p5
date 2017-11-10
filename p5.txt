@@ -158,38 +158,92 @@ los?
 
 
 
-12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
- ** ¿Cuántos flujos hay? ¿por qué?
- ** ¿Cuántos paquetes se pierden?
- ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
- ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una
+opción RTP. Empecemos mirando los flujos RTP.
+
+• ¿Cuántos flujos hay? ¿por qué?
+    Hay dos flujos de audio. Esto es debido a que estamos utilizando sonido estéreo.
+
+• ¿Cuántos paquetes se pierden?
+    Ningún paquete, 0%
+
+• ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el
+valor de delta?
+    Delta máximo para un flujo es 1290.479
+    Para el otro es de 1290.444
+    Por el momento, no sé lo que significa el delta.
+
+• ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué
+quiere decir eso? ¿Estamos ante una conversación de calidad?
+    El jitter medio es de 153.24 milisegundos. El jitter máximo es de 183.10 ms.
+    Quiere decir que el retardo tiene una variación media de ese valor y que como máximo la varianza del retarde fue el otro valor.
+    Un jitter de más de 150 ms es considerado como demasiado alto, así que esta llamada está al límite de ser considerada de calidad.
 
 
-13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
- ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
- ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
- ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
- ** ¿A qué se debe el cambio tan brusco del jitter?
- ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
- ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
+13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony
+-> RTP -> Stream Analysis.
+
+• ¿Cuánto valen el delta y el jitter para el primer paquete que
+ha llegado?
+    Valen 0, porque todavía no se ha comparado con ningún otro paquete al ser este el primero.
+
+• ¿Podemos saber si éste es el primer paquete que nos han enviado?
+    Podemos saber si este paquete es el primero por las razones comentadas arriba.    
+
+• Los valores de jitter son menores de 10ms hasta un paquete
+dado. ¿Cuál?
+    Paquete 247.
+
+• ¿A qué se debe el cambio tan brusco del jitter?
+    A un delta muy elevado.
+
+• ¿Es comparable este cambio con el tiempo desde la recepción del
+paquete anterior? ¿Por qué?
+    Sí. Si observamos los tiempos en los que llegaron el paquete 246 y el 247, hay un salto bastante grande de tiempo.
+
+• ¿Cuál es la dependencia entre el tiempo transcurrido desde el
+paquete anterior y el valor de jitter?
+    El delta es la diferencia de tiempo que hubo entre el paquete 246 y 247, casi medio segundo. Cuanto más grande el valor de delta,
+    más grande puede ser el jitter.
 
 
-14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
- ** ¿Cuánto dura la conversación?
- ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+
+
+14. En Telephony selecciona el menú VoIP calls. Verás que se lista la
+llamada de voz IP capturada en una ventana emergente. Selecciona
+esa llamada y pulsa el botón Graph.
+
+• ¿Cuánto dura la conversación?
+    Aproximadamente 25 segundos.
+
+• ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+    No sé contestar a esta pregunta. Los ssrc tiene que ver con sincronización.
 
 
 15. Identifica la trama donde se finaliza la conversación.
- ** ¿Qué método SIP se utiliza?
- ** ¿En qué trama(s)?
- ** ¿Por qué crees que se envía varias veces?
+
+• ¿Qué método SIP se utiliza?
+    Se utiliza el método BYE.
+
+• ¿En qué trama(s)?
+    paquete 924.
+
+• ¿Por qué crees que se envı́a varias veces?
+    Puede ser que se esperase una respuesta que no llegó a tiempo. Después de un tiempo, el servidor responde 3 veces OK.
+
 
 
 16. Finalmente, se cierra la aplicación de VozIP.
- ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
- ** ¿En qué trama sucede esto?
- ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
 
+• ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+    Se ha enviado un REGISTER con expires = 0, el usuario se ha dado de baja.
+
+• ¿En qué trama sucede esto?
+    paquete 950.
+
+• ¿En qué se diferencia con la instrucción que se utilizó con anteri-
+oridad (al principio de la sesión)?
+    Se diferencia en el valor de expires, en este caso es 0.
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
