@@ -120,28 +120,43 @@ SIP?
 sip:500@ekiga.net. Veamos el INVITE de cerca.
 
 • ¿Puede verse el nombre del que efectúa la llamada, ası́ como su dirección SIP?
+    Sí, podemos verlo en el campo FROM: "Gregorio Robles" <sip:grex@ekiga.net>;tag=621be956-b29e-db11-82ee-0013ce8c7c2b
 
 
 • ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué for mato/protocolo está?
+    En el cuerpo de la trama podemos observar protocolo SDP, que definirá cómo es la sesión.
 
 
 • ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+    No, el primer intento es infructuoso. Un servidor proxy nos envía un 407 proxy authentication required
 
 
 • ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+    El segundo invite tendrá por lo menos un campo nuevo adicional, el nonce que le envió el proxy y su respuesta.
+    Esto es un mecanismo de autenticación de identidad.
 
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
- ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
- ** ¿Cuál es el tamaño de paquete de los mismos?
- ** ¿Se utilizan bits de padding?
- ** ¿Cuál es la periodicidad de los paquetes que se envían?
- ** ¿Cuántos bits/segundo estamos enviando?
 
+• ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protoco-
+los?
+    Se utilizan los protocolos h.261 y RTP/
 
+• ¿Cuál es el tamaño de paquete de los mismos?
+    El tamaño de los paquetes es de 214 bytes para RTP. Para h.261 es 1028 y 1073.
+
+• ¿Se utilizan bits de padding?
+    No, no se utilizan, se puede ver en el campo Padding = False.
+
+• ¿Cuál es la periodicidad de los paquetes que se envı́an?
+    Según el campo Timestamp, 120 (milisegundos?)
+
+• ¿Cuántos bits/segundo estamos enviando?
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
+
+
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
