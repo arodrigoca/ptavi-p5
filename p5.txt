@@ -217,7 +217,7 @@ esa llamada y pulsa el botón Graph.
     Aproximadamente 25 segundos.
 
 • ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
-    No sé contestar a esta pregunta. Los ssrc tiene que ver con sincronización.
+  Los ssrc son los source identifiers. Es para identificar la fuente de audio o video o lo que sea.
 
 
 15. Identifica la trama donde se finaliza la conversación.
