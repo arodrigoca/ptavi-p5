@@ -162,7 +162,7 @@ los?
 opción RTP. Empecemos mirando los flujos RTP.
 
 • ¿Cuántos flujos hay? ¿por qué?
-    Hay dos flujos de audio. Esto es debido a que estamos utilizando sonido estéreo.
+    Hay dos flujos. Uno de video y otro de audio. Sólo de ida.
 
 • ¿Cuántos paquetes se pierden?
     Ningún paquete, 0%
@@ -261,7 +261,7 @@ Ekiga para ver todo el proceso.
 
 20. Identifica las diferencias existentes entre esta conversación y la con versación anterior:
 • ¿Cuántos flujos tenemos?
-    Tenemos 4 flujos de RTP. Dos para un lado de la llamada y otros dos para el otro lado de la llamada (estéreo).
+    Tenemos 4 flujos de RTP. Dos para un lado de la llamada y otros dos para el otro lado de la llamada (audio y video).
 
 • ¿Cuál es su periodicidad?
     TimeStamp = 160
@@ -287,9 +287,7 @@ Si estás utilizando tu portátil en vez de una máquina del laboratorio, ten en
 que la captura puede ser diferente, porque con el portátil estarás conectado a la red wifi,
 mientras que los ordenadores de los laboratorios lo están a una LAN.
 
-21. Filtra por los paquetes SIP de la captura y guarda únicamente los
-paquetes SIP como p5.pcapng. Abre el fichero guardado para cercio-
-rarte de que lo has hecho bien. Deberás guardarlo en un archivo de
+21. Filtra por los paquetes SIP de la captura y guarda únicamente los paquetes SIP como p5.pcapng. Abre el fichero guardado para cerciorarte de que lo has hecho bien. Deberás guardarlo en un archivo de
 nombre p5.pcapng y añadirlo al repositorio.
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 [Al terminar la práctica, realiza un push para sincronizar tu repositorio GitHub]
