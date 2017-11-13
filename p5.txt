@@ -248,33 +248,48 @@ oridad (al principio de la sesión)?
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
-================================================================================
-================================================================================
+17. Dirı́gete a la web http://www.ekiga.net con el navegador y créate una cuenta. Lanza Ekiga, y configúralo con los datos de la cuenta
+que te acabas de crear. Comprueba que estás conectado (En la barra al final de la ventana podrás ver “Connected”). Al terminar, cierra
+completamente Ekiga.
 
-Captura de una sesión SIP
+18. Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.net. Recuerda que has de comenzar a capturar tramas antes de arrancar 
+Ekiga para ver todo el proceso.
 
-Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.net. Tendrás que dar de alta una cuenta en www.ekiga.net con el navegador. Recuerda también que has de comenzar a capturar tramas antes de arrancar Ekiga para ver todo el proceso en el que participa SIP. Para realizar los siguientes ejercicios, deberás crearte una cuenta en ekiga.net y darte de alta la lanzar la aplicación.
+19. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior 3 :
+• ¿Es necesario el uso de DNS y STUN? ¿Por qué? Sí, se ha usado CLASSIC-STUN y DNS. STUN se utiliza para poder atravesar NAT y el DNS lo necesitamos para saber la dirección de ekiga.net.
+• ¿Son diferentes el registro y la descripción de la sesión? Sí, son distintos. La descripción de la sesión aparte de llevar información SIP, lleva SDP.
 
-17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
- ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
- ** ¿Son diferentes el registro y la descripción de la sesión?
+20. Identifica las diferencias existentes entre esta conversación y la con versación anterior:
+• ¿Cuántos flujos tenemos?
+    Tenemos 4 flujos de RTP. Dos para un lado de la llamada y otros dos para el otro lado de la llamada (estéreo).
 
+• ¿Cuál es su periodicidad?
+    TimeStamp = 160
+    Tiempo entre paquetes: 0.015
 
-18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
- ** ¿Cuántos flujos tenemos?
- ** ¿Cuál es su periodicidad?
- ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
- ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
- ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+• ¿Cuánto es el valor máximo del delta y los valores medios y
+máximo del jitter?
+    Max Delta = 54.22ms
+    Max jitter = 7.61ms
+    Mean jitter = 3.80ms
 
+• ¿Podrı́as reproducir la conversación desde Wireshark? ¿Cómo?
+    Se puede hacer desde el menú telephony y play stream.
 
+Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
+    En este caso la conexión parece buena, con un jitter buffer de 5, la llamada funciona, pero con un jitter buffer de 0 la llamada se corta cada poco tiempo.
 
+• ¿Sabrı́as decir qué tipo de servicio ofrece sip:9999@qxip.net?
+    No se sabe, el contacto no está disponible para llamada. En su lugar, he llamado al servicio de eco (te devuelve con el retardo que haya lo que acabas de decir).
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
-19. Filtra por los paquetes SIP de la captura y guarda únicamente los paquetes SIP como sip.libpcap. Abre el fichero guardado para cerciorarte de que lo has hecho bien. Deberás guardarlo en un archivo de nombre p5.libpcap y añadirlo al repositorio.
+Si estás utilizando tu portátil en vez de una máquina del laboratorio, ten en cuenta
+que la captura puede ser diferente, porque con el portátil estarás conectado a la red wifi,
+mientras que los ordenadores de los laboratorios lo están a una LAN.
 
+21. Filtra por los paquetes SIP de la captura y guarda únicamente los
+paquetes SIP como p5.pcapng. Abre el fichero guardado para cercio-
+rarte de que lo has hecho bien. Deberás guardarlo en un archivo de
+nombre p5.pcapng y añadirlo al repositorio.
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
-
 [Al terminar la práctica, realiza un push para sincronizar tu repositorio GitHub]
-
-[Recuerda mirar el guión para ver las instrucciones de entrega]
