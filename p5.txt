@@ -265,8 +265,9 @@ Ekiga para ver todo el proceso.
 
 • ¿Cuál es su periodicidad?
     TimeStamp = 160
-    Tiempo entre paquetes: 0.015
-
+    Tiempo entre paquetes: 20 ms
+    El codec de audio utilizado es un codec de 8 bits por símbolo y 8000 símbolos por segundo. 64Kbit/seg
+.
 • ¿Cuánto es el valor máximo del delta y los valores medios y
 máximo del jitter?
     Max Delta = 54.22ms
